@@ -2,20 +2,11 @@ Rails.application.routes.draw do
 
   get "/me", to: "users#show"
 
-  resources :recipes
-  resources :ingredients
+  resources :englishes
+  resources :portugueses
   resources :users
-  resources :recipe_ingredients
-
-  get "/recipes/:id", to: "recipes#show"
-
-  #Create custom and dynamic route
-
-  #create custom route that shows the ingredients connected to 2 or more recipes
-
-  get "/recipes/search/:keyword", to: "recipes#show_specific"
-  
-  get "/ingredients-popular", to: "ingredients#popular_ingredients"
+  resources :quizzes
+  resources :meanings
 
   post "/login", to: "sessions#create"
 
