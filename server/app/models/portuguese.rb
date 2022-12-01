@@ -1,0 +1,2 @@
+class Portuguese < ApplicationRecord
+end
