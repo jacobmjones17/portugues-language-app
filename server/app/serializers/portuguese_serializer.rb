@@ -1,3 +1,3 @@
 class PortugueseSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :word
 end
