@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./components/navbar/NavBar";
-import LoginSignupContainer from "./components/LoginSignupContainer/LoginSignupContainer";
 import { Routes, Route } from 'react-router-dom';
 import Home from "./components/Home";
-import NewRecipe from "./components/recipes/NewRecipe";
-import EditRecipe from "./components/recipes/EditRecipe";
 import './App.css';
 
 const App = () => {
@@ -30,7 +26,7 @@ const App = () => {
             }
         });
 
-        fetch("/recipes")
+        fetch("/questions")
         .then((response) => response.json())
         .then((recipes) => setRecipes(recipes))
     }, []);
@@ -60,17 +56,13 @@ const App = () => {
 
 return (
     <div className="App">
-    <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={user}/>
     <Routes>
-    <Route path="/recipes/:id/edit" element={<EditRecipe recipes={recipes} onUpdateRecipe={handleUpdateRecipe}/>} />
-    <Route path="/recipes/create" element={< NewRecipe onAddRecipe={handleAddRecipe} recipes={recipes} />} />
-    <Route path="/recipes" element={<Home
-    loggedIn={loggedIn}
-    recipes={recipes}
-    onDeleteRecipe={handleDeleteRecipe}
-    onAddRecipe={handleAddRecipe}
-    />} />
-    <Route path="/" element={<LoginSignupContainer onLogin={loginUser} onLogout={logoutUser} user={user}/>} />
+    <Route path="quiz" element={<QuestionList />} />
+        <Route path="flashcards" element={<CardList />} />
+        <Route path="addquestion" element={<QuestionForm />} />
+        <Route path="addflashcard" element={<CardForm />} />
+        <Route path="/" element={<Home />} />
+    
     </Routes>
     </div>
 )
