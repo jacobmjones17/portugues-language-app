@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import "../app.css"
 
 
 function CardList() {
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/flashcards")
+        fetch("/flashcards")
             .then((response) => response.json())
             .then((cards) => setCards(cards))
     }, [])

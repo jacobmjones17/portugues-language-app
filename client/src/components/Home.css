@@ -1,19 +1,124 @@
-p {
-    font-weight: bolder;
-    font-size: 2.5rem;
-    text-align: center;
+body {
+    background: url("https://blog.logrocket.com/wp-content/uploads/2019/04/react-hooks-cheat-sheet-best-practices.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-.add-recipe {
-    width: 100%;
-    padding: 10px;
-    border: 5px solid #000;
-    outline: none !important;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-size: 0.99rem;
-    font-weight: bolder;
-    color: white;
-    background: black;
+
+.container {
+    max-width: 900px;
+    margin: 1rem 2rem;
+}
+
+.card-grid {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3.8rem;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 1rem;
+    border-color: rgb(107, 255, 255);
+    border: 10rem;
+    box-shadow: 0 0 10px 5px rgb(10, 4, 66);
+    background-image: url("https://t4.ftcdn.net/jpg/02/42/03/25/240_F_242032542_DMW2J5F2t1P2mTOF3xRpxpOUwqSueGuh.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    transform-style: preserve-3d;
+    height: 350px;
+    width: 300px;
+    transition: 150ms;
     cursor: pointer;
-    transition: 0.3s linear;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0))
+    translateY(var(--translate-y, 0));
+}
+
+.card:hover {
+    --translate-y: -2px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+    color:rgba(77, 73, 73, 0.329)
+}
+
+.card.flip {
+    --rotate-y: 180deg;
+}
+
+.card .front {
+    margin-top: .5rem;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.card .front,
+.card .back {
+    position: absolute;
+    padding: 1rem;
+    backface-visibility: hidden;
+}
+
+.card .back {
+    transform: rotateY(180deg);
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.link {
+    background-color: orangered;
+}
+
+.description {
+    font-size: x-large;
+}
+
+.quizspacer {
+
+    margin-top:3.68rem;
+    color:white;
+    font-weight:bold;
+    font-size:4.3rem;
+}
+
+.innerspacer {
+    text-align: center;
+    font-style:oblique
+}
+
+.title{
+    color: rgb(107, 255, 255);
+}
+
+.description {
+    color: rgb(107, 255, 255);
+}
+
+.button {
+    display: grid;
+    margin: auto;
+    align-items: center;
+    gap: 4rem;
+    font-size: 40px;
+}
+
+.questionform {
+    margin:auto;
+    text-align: center;
+    color:white;
+    font-weight:bold;
+    font-size:3rem;
+}
+
+.cardform {
+    margin:auto;
+    text-align: center;
+    color:white;
+    font-weight:bold;
+    font-size:3rem;
 }
