@@ -1,4 +1,4 @@
 class English < ApplicationRecord
     has_many :meanings
-    has many :portugueses, through: :meanings
+    has_many :portugueses, through: :meanings
 end
