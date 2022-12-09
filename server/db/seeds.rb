@@ -25,6 +25,8 @@ third_english_word = English.create(word: "Good Morning")
 third_portuguese_word = Portuguese.create(word: "Bom Dia")
 third_word_meaning = Meaning.create(definition: "How to greet someone in the morning", english_id: 3, portuguese_id: 3)
 
-quiz = Quiz.create!(question: "What is the synonym of the word: Good Morning", meaning_id: 3, user_id: jacob.id)
+first_question = Quiz.create!(question: "What is the synonym of the word: Good Morning", meaning_id: 3, user_id: jacob.id)
+second_question = Quiz.create!(question: "What is the synonym of the word: Good Bye", meaning_id: 2, user_id: jacob.id)
+third_question = Quiz.create!(question: "What is the synonym of the word: Hello", meaning_id: 1, user_id: jacob.id)
 
 

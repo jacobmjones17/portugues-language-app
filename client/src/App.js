@@ -17,6 +17,7 @@ function App() {
       <NavBar />
       <Routes>
       <Route path="quiz" element={<QuestionList />} />
+      <Route path="signup" element={<QuestionList />} />
       <Route path="flashcards" element={<CardList />} />
       <Route path="addquestion" element={<QuestionForm />} />
       <Route path="addflashcard" element={<CardForm />} />
