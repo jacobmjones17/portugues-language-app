@@ -1,5 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import Logout from "./logout/Logout";
 
 const linkStyles = {
     display: "inline-block",
@@ -11,9 +12,22 @@ const linkStyles = {
     color: "rgb(107, 255, 255)",
 };
 
-function NavBar() {
-    return ( 
-    <div>
+function NavBar( { loggedIn, logoutUser, currentUser } ) {
+
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        fetch("/logout", {
+            method: "DELETE"
+        }).then(() => {
+            navigate("/")
+            logoutUser();
+        })
+    }
+
+    const loggedinNav = () => {
+        return (
+            <div>
     <NavLink
         to="/"
         exact
@@ -49,7 +63,22 @@ function NavBar() {
     >
         Add Flash Card
     </NavLink>
+    <Logout handleLogout={handleLogout}/>
     </div>
+        )
+    }
+
+    const loggedOutNav = () => {
+        <nav>
+            <a href="/">Portuguese Language App</a>
+            <div>
+                <p>Welcome, <span>Guest</span></p>
+            </div>
+        </nav>
+    }
+    
+    return ( 
+        <div> {loggedIn ? loggedOutNav() : loggedOutNav()} </div>
     )
 }
 
