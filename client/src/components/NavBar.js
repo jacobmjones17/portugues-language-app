@@ -69,16 +69,17 @@ function NavBar( { loggedIn, logoutUser, currentUser } ) {
     }
 
     const loggedOutNav = () => {
+        return(
         <nav>
             <a href="/">Portuguese Language App</a>
-            <div>
-                <p>Welcome, <span>Guest</span></p>
-            </div>
+            <button onClick = {() => navigate("/login")}> Login </button>
+            <button onClick = {() => navigate("/signup")}> Signup </button>
         </nav>
+        )
     }
     
     return ( 
-        <div> {loggedIn ? loggedOutNav() : loggedOutNav()} </div>
+        <div> {loggedIn ? loggedinNav() : loggedOutNav()} </div>
     )
 }
 
