@@ -6,6 +6,7 @@ const Signup = ( {onLogin} ) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [checked, setChecked] = useState(false)
     const navigate = useNavigate()
 
     function handleSubmit(event) {
@@ -18,7 +19,7 @@ const Signup = ( {onLogin} ) => {
           body: JSON.stringify({
             username: username,
             password: password,
-            password_confirmation: confirmPassword
+            password_confirmation: confirmPassword, 
           }),
         }).then((response) => {
           if (response.ok) {
@@ -31,6 +32,10 @@ const Signup = ( {onLogin} ) => {
         });
       }
 
+      const handleCheckBox = () => {
+        setChecked(!checked);
+      }
+
     return (
         <div className="signup">
             <h1>Signup</h1>
@@ -38,7 +43,7 @@ const Signup = ( {onLogin} ) => {
                 <input 
                     type="text"
                     id="signup-email"
-                    placeholder="Email"
+                    placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
@@ -56,6 +61,14 @@ const Signup = ( {onLogin} ) => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 />
+                <label>
+                <input 
+                type="checkbox"
+                checked={checked}
+                onChange={handleCheckBox}
+                />
+                Teacher
+                </label>
                 <button type="submit">Signup</button>
             </form>
         </div>

@@ -36,7 +36,7 @@ const Login = ( { onLogin } ) => {
             <form onSubmit={handleSubmit}>
                 <input 
                 type="text"
-                placeholder="Email"
+                placeholder="Username"
                 id="login-email"
                 autoComplete="off"
                 value={username}
