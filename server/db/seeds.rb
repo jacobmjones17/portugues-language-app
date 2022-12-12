@@ -15,8 +15,6 @@ first_question = Question.create!(question: "What is the synonym of the word: Go
 second_question = Question.create!(question: "What is the synonym of the word: Good Bye?", user_id: jacob.id)
 third_question = Question.create!(question: "What is the synonym of the word: Hello?", user_id: jacob.id)
 
-
-
 first_english_word = English.create(word: "Hi")
 first_portuguese_word = Portuguese.create(word: "Oi")
 first_word_meaning = Meaning.create(definition: "A way to greet someone", english_id: 1, portuguese_id: 1, question_id: 3)

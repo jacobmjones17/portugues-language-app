@@ -17,4 +17,8 @@ class ApplicationController < ActionController::API
     render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
   end
 
+  def is_teacher
+    
+  end
+
 end
