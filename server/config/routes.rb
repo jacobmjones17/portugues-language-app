@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   get "/me", to: "users#show"
 
-  resources :englishes
-  resources :portugueses
-  resources :users
-  resources :quizzes
-  resources :meanings
+  resources :english
+  resources :portugues
+  resources :user
+  resources :question
+  resources :meaning
 
   post "/login", to: "sessions#create"
 

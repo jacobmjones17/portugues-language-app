@@ -35,6 +35,8 @@ function App() {
           }
       });
 
+      console.log(user)
+
       // fetch("/quiz")
       // .then((response) => response.json())
       // .then((quiz) => setQuiz(quiz))

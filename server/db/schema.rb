@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_01_184938) do
+ActiveRecord::Schema.define(version: 2022_12_12_032344) do
 
   create_table "englishes", force: :cascade do |t|
     t.string "word"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_12_01_184938) do
     t.text "definition"
     t.integer "portuguese_id"
     t.integer "english_id"
+    t.integer "question_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,9 +33,8 @@ ActiveRecord::Schema.define(version: 2022_12_01_184938) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "quizzes", force: :cascade do |t|
+  create_table "questions", force: :cascade do |t|
     t.text "question"
-    t.string "meaning_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

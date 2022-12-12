@@ -1,5 +1,5 @@
 class Meaning < ApplicationRecord
-    has_many :quizzes
+    belongs_to :question
     belongs_to :english
     belongs_to :portuguese
 end
