@@ -21,7 +21,7 @@ const Login = ( { onLogin } ) => {
         }).then((response) => {
             if (response.ok) {
             response.json().then((user) => onLogin(user));
-            navigate("/recipes");
+            navigate("/");
             }
             else {
                 response.json().then(console.log)

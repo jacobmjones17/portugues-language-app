@@ -4,6 +4,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   before_action :authorize
+  # before_action :is_teacher, only {:create, :update, :delete}
 
   private
 
@@ -18,7 +19,12 @@ class ApplicationController < ActionController::API
   end
 
   def is_teacher
-    
+    user = User.find_by(id: session[:user_id])
+    if user.admin == true
+      session[:is_teacher] = true
+    else
+      render json: {errors: ["Unauthorized! Must be a Teacher!"]}, status: :unauthorized 
+    end
   end
 
 end
