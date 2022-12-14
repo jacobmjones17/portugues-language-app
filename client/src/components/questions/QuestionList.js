@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Question from "./Question";
 
 
-function QuestionList() {
-    const [questions, setQuestions] = useState([]);
+function QuestionList({ questions }) {
+    
     const [currentQuestionId, setCurrentQuestion] = useState(1);
     const [score, setScore] = useState(0);
-    const currentQuestion = questions.find((q) => q.id === currentQuestionId);
-
-
-    useEffect(() => {
-        fetch("http://localhost:3000/questions")
-        .then((response) => response.json())
-        .then((questions) => setQuestions(questions))
-    }, [])
+    const individualQuestion = questions.map((q) => q)
+    const currentQuestion = individualQuestion.find((q) => q.id === currentQuestionId);
 
     function handleQuestionAnswered(correct) {
         if (currentQuestionId < questions.length) {
@@ -33,7 +27,7 @@ function QuestionList() {
                 <div className="innerspacer">
                 {currentQuestion ? (
                         <Question
-                        question={currentQuestion}
+                        currentQuestion={currentQuestion}
                         onAnswered={handleQuestionAnswered}
                     />
                 ) : (

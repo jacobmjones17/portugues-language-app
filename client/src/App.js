@@ -5,15 +5,12 @@ import Signup from "./components/singup/Signup";
 import NavBar from "./components/NavBar"
 import QuestionList from "./components/questions/QuestionList";
 import QuestionForm from "./components/questions/QuestionForm";
-import CardForm from "./components/flashcards/CardForm";
-import CardList from "./components/flashcards/CardList";
 import Home from "./components/Home";
 import "./App.css"
 
 
 function App() {
-
-    // const [quiz, setQuiz] = useState([]);
+    const [questions, setQuestions] = useState([]);
     const [user, setUser] = useState(null);
     const [loggedIn, setLoggedIn] = useState(false);
 
@@ -37,9 +34,9 @@ function App() {
 
       // console.log(user)
 
-      // fetch("/quiz")
-      // .then((response) => response.json())
-      // .then((quiz) => setQuiz(quiz))
+        fetch("/questions")
+        .then((response) => response.json())
+        .then((questions) => setQuestions(questions))
     }, []);
 
 
@@ -50,10 +47,8 @@ function App() {
       <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/quiz" element={<QuestionList />} />
-      <Route path="/flashcards" element={<CardList />} />
+      <Route path="/quiz" element={<QuestionList questions={questions} />} />
       <Route path="/addquestion" element={<QuestionForm />} />
-      <Route path="/addflashcard" element={<CardForm />} />
       <Route path="/" element={<Home />} />
     </Routes>
     </div>

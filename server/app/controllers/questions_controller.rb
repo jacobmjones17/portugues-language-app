@@ -4,11 +4,11 @@ class QuestionsController < ApplicationController
     def create
         user = User.find_by(id: session[:user_id])
         if user
-            recipe = user.recipes.create(recipe_params)
-            if recipe.valid?
-            render json: recipe, status: :created
+            question = user.questions.create(question_params)
+            if question.valid?
+            render json: question, status: :created
             else 
-            render json: { errors: [recipe.errors.full_messages] }, status: :unprocessable_entity
+            render json: { errors: [question.errors.full_messages] }, status: :unprocessable_entity
             end
         else
             render json: { errors: ["Not authorized"] }, status: :unauthorized
@@ -17,44 +17,38 @@ class QuestionsController < ApplicationController
 
     def update
         user = User.find_by(id: session[:user_id])
-        recipe = Recipe.find_by(id: params[:id]) 
-        if recipe.user_id == user.id
-            recipe.update(recipe_params)
-            render json: recipe
+        question = Question.find_by(id: params[:id]) 
+        if question.user_id == user.id
+            question.update(question_params)
+            render json: question
         else
-            render json: { errors: [recipe.errors.full_messages] }, status: :unprocessable_entity
+            render json: { errors: [question.errors.full_messages] }, status: :unprocessable_entity
         end
     end
 
     def index
-        recipes = Recipe.all
+        questions = Question.all
 
         if session[:user_id]
-            render json: recipes
+            render json: questions
         else
             render json: { errors: ["Not authorized"] }, status: :unauthorized
         end
     end
 
     def show
-        recipe = Recipe.find_by(id: params[:id])
-        if recipe
-            render json: recipe
+        question = Question.find_by(id: params[:id])
+        if question
+            render json: question
         else
-        render json: { error:"Recipe not found" }
+        render json: { error:"question not found" }
         end 
     end
 
-    #custom route that takes a single word and returns all recipes that have that ingredient in them. 
-    def show_specific 
-        recipes = Recipe.select {|r| r.name.downcase.include? params[:keyword]}
-        render json: recipes
-    end
-
     def destroy
-        recipe = Recipe.find_by(id: params[:id])
-        if recipe.user_id == @current_user.id
-            recipe.destroy
+        question = Question.find_by(id: params[:id])
+        if question.user_id == @current_user.id
+            question.destroy
             head:no_content
         end
     end
@@ -62,6 +56,6 @@ class QuestionsController < ApplicationController
     private 
 
     def recipe_params
-        params.permit(:name, :instructions, :picture,  recipe_ingredients_attributes: [:id, :ingredient_id, :ingredient, :measurement])
+        params.permit(:question)
     end
 end

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Question({ question, onAnswered }) {
+function Question({ currentQuestion, onAnswered }) {
     const [timeRemaining, setTimeRemaining] = useState(10);
 
     useEffect(() => {
@@ -19,25 +19,25 @@ function Question({ question, onAnswered }) {
         };
     }, [timeRemaining, onAnswered])
 
-    function handleAnswer(isCorrect) {
-        setTimeRemaining(10);
-        onAnswered(isCorrect);
-    }
+    // function handleAnswer(isCorrect) {
+    //     setTimeRemaining(10);
+    //     onAnswered(isCorrect);
+    // }
 
-    const { id, prompt, answers, correctIndex } = question;
+    const { id, question } = currentQuestion;
 
     return (
         <>
             <h1>Question {id}</h1>
-            <h3>{prompt}</h3>
-            {answers.map((answer, index) => {
+            <h3>{question}</h3>
+            {/* {answers.map((answer, index) => {
                 const isCorrect = index === correctIndex;
                 return (
                     <button key={answer}  className="button" onClick={() => handleAnswer(isCorrect)}>
                         {answer}
                     </button>
                 );
-            })}
+            })} */}
             <h5>{timeRemaining} seconds remaining</h5>
         </>
     );

@@ -9,11 +9,15 @@ English.delete_all
 Meaning.delete_all
 
 
-jacob = User.create!(username: "jacobmjones17", password_digest: "Pocoes!7", admin: true)
+jacob = User.create(username: "jacobmjones17", password_digest: "1234", admin: true)
 
-first_question = Question.create!(question: "What is the synonym of the word: Good Morning?", user_id: jacob.id)
-second_question = Question.create!(question: "What is the synonym of the word: Good Bye?", user_id: jacob.id)
-third_question = Question.create!(question: "What is the synonym of the word: Hello?", user_id: jacob.id)
+first_question = Question.create!(question: "What is the synonym of the word: Good Morning?")
+second_question = Question.create!(question: "What is the synonym of the word: Good Bye?")
+third_question = Question.create!(question: "What is the synonym of the word: Hello?")
+
+first_user_question = UserQuestion.create(user_id: jacob.id, question_id: 1)
+second_user_question = UserQuestion.create(user_id: jacob.id, question_id: 2)
+third_user_question = UserQuestion.create(user_id: jacob.id, question_id: 3)
 
 first_english_word = English.create(word: "Hi")
 first_portuguese_word = Portuguese.create(word: "Oi")
