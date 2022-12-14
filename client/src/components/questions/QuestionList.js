@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Question from "./Question";
+import "./Question.css"
 
 
 function QuestionList({ questions }) {
@@ -33,7 +34,7 @@ function QuestionList({ questions }) {
                 ) : (
                     <>
                         <h1>Quiz Complete</h1>
-                        <h2>Total Correct: {score}/{questions.length}</h2>
+                        <h2>Total Correct: {((score/questions.length) * 100)}%</h2>
                     </>
                 )}
                 </div>

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Routes, Route } from 'react-router-dom';
 import Login from "./components/login/Login";
 import Signup from "./components/singup/Signup";
-import NavBar from "./components/NavBar"
+import NavBar from "./components/navbar/NavBar"
 import QuestionList from "./components/questions/QuestionList";
 import QuestionForm from "./components/questions/QuestionForm";
 import Home from "./components/Home";
@@ -43,7 +43,6 @@ function App() {
 
   return (
     <div>
-      <h1 className="title">Portuguese Language App</h1>
       <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={user}/>
       <Routes>
       <Route path="/login" element={<Login />} />

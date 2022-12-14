@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function QuestionForm() {
   const [formData, setFormData] = useState({
-    prompt: "",
+    question: "",
     answer1: "",
     answer2: "",
     answer3: "",
@@ -54,7 +54,7 @@ function QuestionForm() {
       <h1>New Question</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Prompt:
+          Question:
           <input
             type="text"
             name="prompt"

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./Question.css"
 
 function Question({ currentQuestion, onAnswered }) {
     const [timeRemaining, setTimeRemaining] = useState(10);
@@ -27,7 +28,7 @@ function Question({ currentQuestion, onAnswered }) {
     const { id, question } = currentQuestion;
 
     return (
-        <>
+        <div className="quiz">
             <h1>Question {id}</h1>
             <h3>{question}</h3>
             {/* {answers.map((answer, index) => {
@@ -39,7 +40,7 @@ function Question({ currentQuestion, onAnswered }) {
                 );
             })} */}
             <h5>{timeRemaining} seconds remaining</h5>
-        </>
+        </div>
     );
 }
 

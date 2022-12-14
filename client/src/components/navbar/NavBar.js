@@ -1,22 +1,20 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import Logout from "./logout/Logout";
-
-const linkStyles = {
-    display: "inline-block",
-    width: "118px",
-    padding: "12px",
-    margin: "0 6px 6px",
-    background: "rgb(255, 255, 0)",
-    textDecoration: "none",
-    color: "rgb(0, 0, 0)",
-    fontWeight: "900",
-    textAlign: "center"
-
-    
-};
+import "./NavBar.css";
 
 function NavBar( { loggedIn, logoutUser, currentUser } ) {
+    
+    const linkStyles = {
+        display: "inline-block",
+        width: "118px",
+        padding: "12px",
+        margin: "0 6px 6px",
+        background: "rgb(255, 255, 0)",
+        textDecoration: "none",
+        color: "rgb(0, 0, 0)",
+        fontWeight: "900",
+        textAlign: "center"
+    };
 
     const navigate = useNavigate()
 
@@ -31,7 +29,7 @@ function NavBar( { loggedIn, logoutUser, currentUser } ) {
 
     const loggedinNav = () => {
         return (
-            <div>
+            <div className="navlinks">
     <NavLink
         to="/"
         exact
@@ -49,12 +47,11 @@ function NavBar( { loggedIn, logoutUser, currentUser } ) {
     <NavLink
         to="/addquestion"
         exact
-        style={linkStyles}
-        
+        style={linkStyles}  
     >
         Add Question
     </NavLink>
-    <Logout handleLogout={handleLogout}/>
+    <button className="Logout" onClick={handleLogout}>Logout</button>
     </div>
         )
     }
@@ -63,8 +60,10 @@ function NavBar( { loggedIn, logoutUser, currentUser } ) {
         return(
         <nav>
             <a href="/">Portuguese Language App</a>
-            <button onClick = {() => navigate("/login")}> Login </button>
-            <button onClick = {() => navigate("/signup")}> Signup </button>
+            <div className="buttons" >
+                <button className="Login" onClick = {() => navigate("/login")}> Login </button>
+                <button className="Signup" onClick = {() => navigate("/signup")}> Signup </button>
+            </div>
         </nav>
         )
     }
