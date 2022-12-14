@@ -43,25 +43,12 @@ function NavBar( { loggedIn, logoutUser, currentUser } ) {
         Quiz
     </NavLink>
     <NavLink
-        to="/flashcards"
-        style={linkStyles}
-    >
-        Flash Cards
-    </NavLink>
-    <NavLink
         to="/addquestion"
         exact
         style={linkStyles}
         
     >
         Add Question
-    </NavLink>
-    <NavLink
-        to="/addflashcard"
-        exact
-        style={linkStyles}
-    >
-        Add Flash Card
     </NavLink>
     <Logout handleLogout={handleLogout}/>
     </div>

@@ -11,65 +11,6 @@ body {
     margin: 1rem 2rem;
 }
 
-.card-grid {
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3.8rem;
-}
-
-.card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-radius: 1rem;
-    border-color: rgb(107, 255, 255);
-    border: 10rem;
-    box-shadow: 0 0 10px 5px rgb(10, 4, 66);
-    background-image: url("https://t4.ftcdn.net/jpg/02/42/03/25/240_F_242032542_DMW2J5F2t1P2mTOF3xRpxpOUwqSueGuh.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size:cover;
-    transform-style: preserve-3d;
-    height: 350px;
-    width: 300px;
-    transition: 150ms;
-    cursor: pointer;
-    transform: perspective(1000px) rotateY(var(--rotate-y, 0))
-    translateY(var(--translate-y, 0));
-}
-
-.card:hover {
-    --translate-y: -2px;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
-    color:rgba(77, 73, 73, 0.329)
-}
-
-.card.flip {
-    --rotate-y: 180deg;
-}
-
-.card .front {
-    margin-top: .5rem;
-    font-size: xx-large;
-    font-weight: bolder;
-}
-
-.card .front,
-.card .back {
-    position: absolute;
-    padding: 1rem;
-    backface-visibility: hidden;
-}
-
-.card .back {
-    transform: rotateY(180deg);
-    font-size: x-large;
-    font-weight: bolder;
-}
-
 .link {
     background-color: orangered;
 }
@@ -91,7 +32,7 @@ body {
     font-style:oblique
 }
 
-.title{
+.title {
     color: rgb(107, 255, 255);
 }
 
@@ -108,14 +49,6 @@ body {
 }
 
 .questionform {
-    margin:auto;
-    text-align: center;
-    color:white;
-    font-weight:bold;
-    font-size:3rem;
-}
-
-.cardform {
     margin:auto;
     text-align: center;
     color:white;

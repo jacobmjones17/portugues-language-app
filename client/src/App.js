@@ -43,13 +43,14 @@ function App() {
 
   return (
     <div>
+      <h1>Portuguese Language App</h1>
       <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={user}/>
       <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/quiz" element={<QuestionList questions={questions} />} />
       <Route path="/addquestion" element={<QuestionForm />} />
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home loggedIn={loggedIn} currentUser={user}/>} />
     </Routes>
     </div>
   );

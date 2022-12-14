@@ -9,7 +9,7 @@ English.delete_all
 Meaning.delete_all
 
 
-jacob = User.create(username: "jacobmjones17", password_digest: "1234", admin: true)
+jacob = User.create!(username: "jacobmjones17", password_digest: "1234", admin: true)
 
 first_question = Question.create!(question: "What is the synonym of the word: Good Morning?")
 second_question = Question.create!(question: "What is the synonym of the word: Good Bye?")
