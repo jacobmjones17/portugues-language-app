@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'user_questions/controller'
   get "/me", to: "users#show"
 
   resources :englishes

@@ -43,7 +43,7 @@ function App() {
 
   return (
     <div>
-      <h1>Portuguese Language App</h1>
+      <h1 className="title">Portuguese Language App</h1>
       <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={user}/>
       <Routes>
       <Route path="/login" element={<Login />} />

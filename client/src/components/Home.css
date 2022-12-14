@@ -1,57 +1,6 @@
-body {
-    background: url("https://blog.logrocket.com/wp-content/uploads/2019/04/react-hooks-cheat-sheet-best-practices.png") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.container {
-    max-width: 900px;
-    margin: 1rem 2rem;
-}
-
-.link {
-    background-color: orangered;
-}
-
 .description {
-    font-size: x-large;
-}
-
-.quizspacer {
-
-    margin-top:3.68rem;
-    color:white;
-    font-weight:bold;
-    font-size:4.3rem;
-}
-
-.innerspacer {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    margin-top: 2rem;
     text-align: center;
-    font-style:oblique
-}
-
-.title {
-    color: rgb(107, 255, 255);
-}
-
-.description {
-    color: rgb(107, 255, 255);
-}
-
-.button {
-    display: grid;
-    margin: auto;
-    align-items: center;
-    gap: 4rem;
-    font-size: 40px;
-}
-
-.questionform {
-    margin:auto;
-    text-align: center;
-    color:white;
-    font-weight:bold;
-    font-size:3rem;
 }

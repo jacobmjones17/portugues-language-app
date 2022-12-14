@@ -4,12 +4,16 @@ import Logout from "./logout/Logout";
 
 const linkStyles = {
     display: "inline-block",
-    width: "105px",
+    width: "118px",
     padding: "12px",
     margin: "0 6px 6px",
-    background: "rgba(77, 73, 73, 0.329)",
+    background: "rgb(255, 255, 0)",
     textDecoration: "none",
-    color: "rgb(107, 255, 255)",
+    color: "rgb(0, 0, 0)",
+    fontWeight: "900",
+    textAlign: "center"
+
+    
 };
 
 function NavBar( { loggedIn, logoutUser, currentUser } ) {
