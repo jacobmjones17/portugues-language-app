@@ -13,7 +13,8 @@ function App() {
     const [questions, setQuestions] = useState([]);
     const [user, setUser] = useState(null);
     const [loggedIn, setLoggedIn] = useState(false);
-    const [answers, setAnswers] = useState([])
+    // const [answers, setAnswers] = useState([])
+    const [users, setUsers] = useState([])
 
     const loginUser = (currentUser) => {
       setUser(currentUser);
@@ -39,12 +40,16 @@ function App() {
         .then((response) => response.json())
         .then((questions) => setQuestions(questions))
 
-        fetch("/meanings")
+        // fetch("/meanings")
+        // .then((response) => response.json())
+        // .then((answers) => setAnswers(answers))
+
+        fetch("/users")
         .then((response) => response.json())
-        .then((answers) => setAnswers(answers))
+        .then((users) => setUsers(users))
     }, []);
 
-    console.log(answers)
+    // console.log(answers)
 
 
 
@@ -54,9 +59,9 @@ function App() {
       <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/quiz" element={<QuestionList questions={questions} answers={answers}/>} />
+      <Route path="/quiz" element={<QuestionList questions={questions}/>} />
       <Route path="/addquestion" element={<QuestionForm />} />
-      <Route path="/" element={<Home loggedIn={loggedIn} currentUser={user}/>} />
+      <Route path="/" element={<Home loggedIn={loggedIn} currentUser={user} users={users}/>} />
     </Routes>
     </div>
   );

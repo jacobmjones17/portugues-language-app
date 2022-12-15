@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :questions
   resources :meanings
+  resources :user_questions
 
   post "/login", to: "sessions#create"
 

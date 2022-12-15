@@ -29,7 +29,7 @@ function Question({ currentQuestion, onAnswered }) {
 
     return (
         <div className="quiz">
-            <h1>Question {id}</h1>
+            <h1> Question {id}</h1>
             <h3>{question}</h3>
             {/* {answers.map((answer, index) => {
                 const isCorrect = index === correctIndex;
