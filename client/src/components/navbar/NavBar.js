@@ -7,8 +7,8 @@ function NavBar( { loggedIn, logoutUser, currentUser } ) {
     const linkStyles = {
         display: "inline-block",
         width: "118px",
-        padding: "12px",
-        margin: "0 6px 6px",
+        padding: "8px",
+        margin: "0 6px 2px",
         background: "rgb(255, 255, 0)",
         textDecoration: "none",
         color: "rgb(0, 0, 0)",
