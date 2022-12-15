@@ -3,7 +3,7 @@ import Question from "./Question";
 import "./Question.css"
 
 
-function QuestionList({ questions, answers }) {
+function QuestionList({ questions }) {
     
     const [currentQuestionId, setCurrentQuestion] = useState(1);
     const [score, setScore] = useState(0);

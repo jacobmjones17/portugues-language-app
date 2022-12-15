@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     def index
         user = User.find_by(id: session[:user_id])
         all_students = User.select { |user| !user.admin}
-        byebug
+        # byebug
         if user.admin == true
             render json: all_students
         else

@@ -1,10 +1,18 @@
 import React, {useState} from "react";
 import "./Home.css"
 
-function Home({loggedIn, currentUser, users}) {
+function Home({loggedIn, currentUser, users, questions}) {
     const [formData, setFormData] = useState({
         correctIndex: 0,
       });
+
+      const [checked, setChecked] = useState(false);
+
+    const handleCheckBox = () => {
+        setChecked(!checked);
+    };
+
+      const allQuestions = questions.map((question) => <label> <li> <input type="checkbox" onChange={handleCheckBox}/> {question.question} </li> </label>)
 
     function handleChange(event) {
         setFormData({
@@ -24,8 +32,10 @@ function Home({loggedIn, currentUser, users}) {
             value={formData.correctIndex}
             onChange={handleChange}
             >
+            <option value="Select Student">Select Student</option>
             {allStudents}
           </select>
+          {allQuestions}
             </div>
         );
       };

@@ -61,7 +61,7 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/quiz" element={<QuestionList questions={questions}/>} />
       <Route path="/addquestion" element={<QuestionForm />} />
-      <Route path="/" element={<Home loggedIn={loggedIn} currentUser={user} users={users}/>} />
+      <Route path="/" element={<Home loggedIn={loggedIn} currentUser={user} users={users} questions={questions}/>} />
     </Routes>
     </div>
   );
