@@ -1,12 +1,12 @@
 class MeaningsController < ApplicationController
     
     def index
-        meaning = Meaning.all
-
+        meanings = Meaning.all
+        # byebug
         if session[:user_id]
-        render json: meaning
+            render json: meanings
         else
-        render json: { errors: ["Not authorized"] }, status: :unauthorized
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
         end
     end
 

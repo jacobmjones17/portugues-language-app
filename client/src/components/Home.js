@@ -35,7 +35,7 @@ function Home({loggedIn, currentUser, users, questions}) {
             <option value="Select Student">Select Student</option>
             {allStudents}
           </select>
-          {allQuestions}
+            {allQuestions}
             </div>
         );
       };

@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
     before_action :authorize
+    before_action :is_teacher, only: [:create, :update, :delete]
     
     def create
         user = User.find_by(id: session[:user_id])
@@ -55,7 +56,7 @@ class QuestionsController < ApplicationController
 
     private 
 
-    def recipe_params
+    def question_params
         params.permit(:question)
     end
 end

@@ -34,8 +34,6 @@ function App() {
           }
       });
 
-      // console.log(user)
-
         fetch("/questions")
         .then((response) => response.json())
         .then((questions) => setQuestions(questions))
@@ -49,8 +47,7 @@ function App() {
         .then((users) => setUsers(users))
     }, []);
 
-    // console.log(answers)
-
+    console.log(questions)
 
 
   return (
