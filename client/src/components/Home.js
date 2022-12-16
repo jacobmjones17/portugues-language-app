@@ -24,8 +24,6 @@ function Home( { loggedIn, currentUser, users, questions } ) {
         return (null)
       }
     }
-
-    console.log(users)
   
 
     function handleChange(event) {
@@ -35,10 +33,11 @@ function Home( { loggedIn, currentUser, users, questions } ) {
         });
       }
 
-      function handleAssign(event) {
-        event.preventDefault()
+      // function handleAssign(event) {
+      //   event.preventDefault()
+          
         
-      }
+      // }
 
       const loggedInHome = () => {
         if (!loggedIn){
@@ -50,17 +49,19 @@ function Home( { loggedIn, currentUser, users, questions } ) {
       } else if (loggedIn && currentUser.admin){
           return(
                 <div className="teacher-description">
-                <p>Welcome! Assign Questions for Each Student!</p>
-                <select
-                name="correctIndex"
-                value={formData.correctIndex}
-                onChange={handleChange}
-                >
-                  <option value="Select Student">Select Student</option>
-                    {allStudents()}
-                  </select>
-                    {allQuestions}
-                  <button>Assign</button>
+                  <p>Welcome! Assign Questions for Each Student!</p>
+                  <form>
+                    <select
+                      name="correctIndex"
+                      value={formData.correctIndex}
+                      onChange={handleChange}
+                    >
+                    <option value="Select Student">Select Student</option>
+                      {allStudents()}
+                    </select>
+                      {allQuestions}
+                    <button>Assign</button>
+                  </form>
                 </div>
           )
       } else {

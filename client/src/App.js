@@ -26,7 +26,7 @@ function App() {
       setUser({});
       setLoggedIn(false);
     };
-
+        
     useEffect(() => {
       fetch("/me")
       .then((response) => {;
