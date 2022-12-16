@@ -47,8 +47,6 @@ function App() {
         .then((users) => setUsers(users))
     }, []);
 
-    // console.log(questions)
-
 
   return (
     <div>
