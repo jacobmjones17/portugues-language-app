@@ -47,7 +47,7 @@ function App() {
         .then((users) => setUsers(users))
     }, []);
 
-    console.log(questions)
+    // console.log(questions)
 
 
   return (

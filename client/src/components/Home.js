@@ -5,6 +5,7 @@ function Home( { loggedIn, currentUser, users, questions } ) {
     const [formData, setFormData] = useState({
         correctIndex: 0,
       });
+      // console.log(users)
 
     const [checked, setChecked] = useState(false);
     
@@ -13,7 +14,8 @@ function Home( { loggedIn, currentUser, users, questions } ) {
     };
 
     const allQuestions = questions.map((question) => <label> <li> <input type="checkbox" onChange={handleCheckBox}/> {question.question} </li> </label>)
-    const allStudents = users.map((user) => <option value={user.username}>{user.username}</option>)
+    const allStudents = users.map((user) => !user.admin ? <option value={user.username}>{user.username} </option> : null)
+    const user = users.map((user) => user)
 
     function handleChange(event) {
         setFormData({
@@ -22,23 +24,31 @@ function Home( { loggedIn, currentUser, users, questions } ) {
         });
       }
 
+      // function handleAssign(event) {
+      //   event.preventDefault()
+        
+      // }
+
     const loggedInHome = () => {
-        return (
+          if (user.admin === true) {
+              <div className="description">
+                <p>Welcome! Assign Questions for Each Student!</p>
+                <select
+                name="correctIndex"
+                value={formData.correctIndex}
+                onChange={handleChange}
+                >
+                <option value="Select Student">Select Student</option>
+                  {allStudents}
+                </select>
+                  {allQuestions}
+                <button>Assign</button>
+              </div>
+          } else {
             <div className="description">
                 <p>Welcome! Click on the Quiz to start learning</p>
-            <select
-            name="correctIndex"
-            value={formData.correctIndex}
-            onChange={handleChange}
-            >
-            <option value="Select Student">Select Student</option>
-            {allStudents}
-          </select>
-            {allQuestions}
-            <button>Submit</button>
             </div>
-        );
-      };
+          }
 
       const loggedOutHome = () => {
         return (
@@ -49,8 +59,9 @@ function Home( { loggedIn, currentUser, users, questions } ) {
       }
 
     return (
-        <div>{loggedIn ? loggedInHome() : loggedOutHome()}</div>
+        <div> { loggedIn ? loggedInHome() : loggedOutHome() } </div>
     )
 }
+}
 
-export default Home
+export default Home;

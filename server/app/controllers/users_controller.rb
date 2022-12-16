@@ -23,10 +23,10 @@ class UsersController < ApplicationController
 
     def index
         user = User.find_by(id: session[:user_id])
-        all_students = User.select { |user| !user.admin}
+        all_users = User.all
         # byebug
         if user.admin == true
-            render json: all_students
+            render json: all_users
         else
             render json: { error: "Not authorized" }, status: :unauthorized
         end

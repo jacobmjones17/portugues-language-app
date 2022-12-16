@@ -10,9 +10,9 @@ Meaning.delete_all
 UserQuestion.delete_all
 
 
-jacob = User.create!(username: "Jacobmjones17", password_digest: "1234", admin: true)
-bre = User.create!(username: "Breanne", password_digest: "1234", admin: false)
-courtney = User.create!(username: "Courtney", password_digest: "1234", admin: false)
+jacob = User.create!(username: "jacobmjones17", password: "1234", admin: true)
+bre = User.create!(username: "breanne", password: "1234", admin: false)
+courtney = User.create!(username: "courtney", password: "1234", admin: false)
 
 first_english_word = English.create(word: "Hi")
 first_portuguese_word = Portuguese.create(word: "Oi")
