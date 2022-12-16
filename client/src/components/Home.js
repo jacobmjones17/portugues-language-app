@@ -12,8 +12,8 @@ function Home( { loggedIn, currentUser, users, questions } ) {
         setChecked(!checked);
     };
 
-      const allQuestions = questions.map((question) => <label> <li> <input type="checkbox" onChange={handleCheckBox}/> {question.question} </li> </label>)
-      const allStudents = users.map((user) => <option value={user.username}>{user.username}</option>)
+    const allQuestions = questions.map((question) => <label> <li> <input type="checkbox" onChange={handleCheckBox}/> {question.question} </li> </label>)
+    const allStudents = users.map((user) => <option value={user.username}>{user.username}</option>)
 
     function handleChange(event) {
         setFormData({
