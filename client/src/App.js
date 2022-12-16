@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { Routes, Route } from 'react-router-dom';
 import Login from "./components/login/Login";
 import Signup from "./components/singup/Signup";
@@ -7,13 +7,15 @@ import QuestionList from "./components/questions/QuestionList";
 import QuestionForm from "./components/questions/QuestionForm";
 import Home from "./components/Home";
 import "./App.css"
+import { UserContext } from "./components/context/User"
 
 
 function App() {
     const [questions, setQuestions] = useState([]);
     const [loggedIn, setLoggedIn] = useState(false);
     // const [answers, setAnswers] = useState([])
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState([]);
+    const { user, setUser } = useContext(UserContext);
 
     const loginUser = (currentUser) => {
       setUser(currentUser);
