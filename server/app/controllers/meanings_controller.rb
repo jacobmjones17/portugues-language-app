@@ -1,5 +1,6 @@
 class MeaningsController < ApplicationController
-    
+    skip_before_action :authorize
+
     def index
         meanings = Meaning.all
         # byebug

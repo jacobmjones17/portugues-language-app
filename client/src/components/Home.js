@@ -1,18 +1,19 @@
 import React, {useState} from "react";
 import "./Home.css"
 
-function Home({loggedIn, currentUser, users, questions}) {
+function Home( { loggedIn, currentUser, users, questions } ) {
     const [formData, setFormData] = useState({
         correctIndex: 0,
       });
 
-      const [checked, setChecked] = useState(false);
-
+    const [checked, setChecked] = useState(false);
+    
     const handleCheckBox = () => {
         setChecked(!checked);
     };
 
       const allQuestions = questions.map((question) => <label> <li> <input type="checkbox" onChange={handleCheckBox}/> {question.question} </li> </label>)
+      const allStudents = users.map((user) => <option value={user.username}>{user.username}</option>)
 
     function handleChange(event) {
         setFormData({
@@ -20,8 +21,6 @@ function Home({loggedIn, currentUser, users, questions}) {
           [event.target.name]: event.target.value,
         });
       }
-
-    const allStudents = users.map((user) => <option value={user.username}>{user.username}</option>)
 
     const loggedInHome = () => {
         return (
@@ -36,6 +35,7 @@ function Home({loggedIn, currentUser, users, questions}) {
             {allStudents}
           </select>
             {allQuestions}
+            <button>Submit</button>
             </div>
         );
       };
