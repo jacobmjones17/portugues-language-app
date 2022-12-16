@@ -12,8 +12,20 @@ function Home( { loggedIn, currentUser, users, questions } ) {
         setChecked(!checked);
     };
 
-    const allQuestions = questions.map((question) => <label> <li> <input type="checkbox" onChange={handleCheckBox}/> {question.question} </li> </label>)
-    const allStudents = users.map((user) => !user.admin ? <option value={user.username}>{user.username} </option> : null)
+    const allQuestions = questions.map((question) => <label> <li> <input type="checkbox" onChange={handleCheckBox} key={question.id}/> {question.question} </li> </label>)
+    // Make sure that Users is an array
+    const allStudents = () => {
+      if (users) {
+        return(
+      users.map((user) => !user.admin ? <option value={user.username} key={user.id} >{user.username} </option> : null)
+        )
+      } else {
+        return (null)
+      }
+    }
+
+    console.log(users)
+  
 
     function handleChange(event) {
         setFormData({
@@ -22,10 +34,10 @@ function Home( { loggedIn, currentUser, users, questions } ) {
         });
       }
 
-      // function handleAssign(event) {
-      //   event.preventDefault()
+      function handleAssign(event) {
+        event.preventDefault()
         
-      // }
+      }
 
       const loggedInHome = () => {
         if (!loggedIn){
@@ -44,7 +56,7 @@ function Home( { loggedIn, currentUser, users, questions } ) {
                 onChange={handleChange}
                 >
                   <option value="Select Student">Select Student</option>
-                    {allStudents}
+                    {allStudents()}
                   </select>
                     {allQuestions}
                   <button>Assign</button>

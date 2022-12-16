@@ -32,21 +32,21 @@ function NavBar( { loggedIn, logoutUser, currentUser } ) {
             <div className="navlinks">
     <NavLink
         to="/"
-        exact
+        exact="true"
         style={linkStyles}
     >
         Home
     </NavLink>
     <NavLink
         to="/quiz"
-        exact
+        exact="true"
         style={linkStyles}
     >
         Quiz
     </NavLink>
     <NavLink
         to="/addquestion"
-        exact
+        exact="true"
         style={linkStyles}  
     >
         Add Question
