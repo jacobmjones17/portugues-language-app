@@ -13,7 +13,8 @@ function Home( { loggedIn, currentUser, users, questions } ) {
     };
 
     const allQuestions = questions.map((question) => <label> <li> <input type="checkbox" onChange={handleCheckBox} key={question.id}/> {question.question} </li> </label>)
-    // Make sure that Users is an array
+    
+    
     const allStudents = () => {
       if (users) {
         return(

@@ -11,7 +11,6 @@ import "./App.css"
 
 function App() {
     const [questions, setQuestions] = useState([]);
-    const [user, setUser] = useState(null);
     const [loggedIn, setLoggedIn] = useState(false);
     // const [answers, setAnswers] = useState([])
     const [users, setUsers] = useState([])
