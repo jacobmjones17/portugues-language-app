@@ -31,7 +31,7 @@ function Home( { loggedIn, currentUser, users, questions } ) {
 
     const loggedInHome = () => {
           if (user.admin === true) {
-              <div className="description">
+              <div className="teacher-description">
                 <p>Welcome! Assign Questions for Each Student!</p>
                 <select
                 name="correctIndex"
@@ -45,7 +45,7 @@ function Home( { loggedIn, currentUser, users, questions } ) {
                 <button>Assign</button>
               </div>
           } else {
-            <div className="description">
+            <div className="student-description">
                 <p>Welcome! Click on the Quiz to start learning</p>
             </div>
           }
