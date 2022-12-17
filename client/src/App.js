@@ -29,24 +29,26 @@ function App() {
         
     useEffect(() => {
       fetch("/me")
-      .then((response) => {;
-          if(response.ok) {
-              response.json().then((user) => loginUser(user))
+      .then((response) => {
+          if (response.ok) {
+              response.json()
+              .then((user) => loginUser(user))
           }
       });
 
-        fetch("/questions")
+      fetch("/questions")
         .then((response) => response.json())
         .then((questions) => setQuestions(questions))
-
-        // fetch("/meanings")
-        // .then((response) => response.json())
-        // .then((answers) => setAnswers(answers))
 
         fetch("/users")
         .then((response) => response.json())
         .then((users) => setUsers(users))
     }, []);
+
+    function handleDeleteQuestion(id) {
+      const updatedQuestions = questions.filter((question) => question.id !== id);
+      setQuestions(updatedQuestions)
+  }
 
 
   return (
@@ -57,7 +59,7 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/quiz" element={<QuestionList questions={questions}/>} />
       <Route path="/addquestion" element={<QuestionForm />} />
-      <Route path="/" element={<Home loggedIn={loggedIn} currentUser={user} users={users} questions={questions}/>} />
+      <Route path="/" element={<Home loggedIn={loggedIn} currentUser={user} users={users} questions={questions} onDeleteQuestion={handleDeleteQuestion}/>} />
     </Routes>
     </div>
   );
