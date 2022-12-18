@@ -16,14 +16,8 @@ class QuestionsController < ApplicationController
         end
     end
 
-    def update
-        question = question_params
-        question.questions.each do |question_id|
-            question_obj = {"user_id": question.student, "question_id": question_id}
-            Question.create(question_obj)
-        end
-
-
+    def create_assignment
+        UserQuestion.create(question_params)
     end
 
     def index
@@ -56,7 +50,7 @@ class QuestionsController < ApplicationController
     private 
 
     def question_params
-        params.permit(:student, :questions)
+        params.permit(:user_id, :question_id)
     end
 
 end

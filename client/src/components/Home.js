@@ -27,9 +27,9 @@ function Home( { loggedIn, currentUser, users, questions, onDeleteQuestion } ) {
     if (questions) {
       return (
         questions.map((question) => 
-          <label> 
+          <label key={question.id}> 
             <li>
-              <input type="checkbox" onChange={() => handleCheckBox(question.id)} key={question.id}/> {question.question}
+              <input type="checkbox" onChange={() => handleCheckBox(question.id)}/> {question.question}
               <button onClick={(event) => handleDeleteClick(question, event)}>
                 ✖
               </button>
@@ -41,39 +41,40 @@ function Home( { loggedIn, currentUser, users, questions, onDeleteQuestion } ) {
       }
     }
 
-    function handleChange(event) {
-      console.log(event)
-      setStudent(event.target.id)
-      setStudent({
-        ...student,
-        [event.target.name]: event.target.value,
-      });
-    }
+function handleChange(userId) {
+    setStudent(users.find( (u) => userId === u.id));
+    
+}
 
-
+  
 
 function handleQuestionAssignment(event) {
   event.preventDefault()
-  const studentObject = {"student": student, "questions": assignedQuestions}
-  fetch("/questions", {
-  method: "PATCH",
+  assignedQuestions.forEach((question) => {
+    let studentObject={"user_id": student.id, "question_id":question}
+  
+  fetch("/assignment", {
+  method: "POST",
   headers: {
       "Content-Type": "application/json",
   },
   body: JSON.stringify(studentObject),
   })
   .then((response) => response.json())
+})
 }
     
 const allStudents = () => {
   if (users) {
     return(
-  users.map((user) => !user.admin ? <option value={user.username} key={user.id} >{user.username} </option> : null)
+  users.map((user) => !user.admin ? <option value={user.id} key={user.id} id={user.id}>{user.username} </option> : null)
     )
   } else {
     return (null)
   }
 }
+
+
 
   const loggedInHome = () => {
     if (!loggedIn){
@@ -88,9 +89,7 @@ const allStudents = () => {
               <p>Welcome! Assign Questions for Each Student!</p>
               <form onSubmit={handleQuestionAssignment}>
                 <select
-                  name="correctIndex"
-                  value={student.correctIndex}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange(e.target.value)}
                 >
                 <option value="Select Student">Select Student</option>
                   {allStudents()}
@@ -107,7 +106,7 @@ const allStudents = () => {
             </div>
       )
   }
-}   
+}
 
     return (
         loggedInHome()
