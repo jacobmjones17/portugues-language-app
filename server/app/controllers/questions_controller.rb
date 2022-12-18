@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
     before_action :authorize
-    before_action :is_teacher, only: [:create, :update, :delete]
+    before_action :is_teacher, only: [:create, :update, :destroy]
     
     def create
         user = User.find_by(id: session[:user_id])
@@ -17,14 +17,13 @@ class QuestionsController < ApplicationController
     end
 
     def update
-        user = User.find_by(id: session[:user_id])
-        question = Question.find_by(id: params[:id]) 
-        if question.user_id == user.id
-            question.update(question_params)
-            render json: question
-        else
-            render json: { errors: [question.errors.full_messages] }, status: :unprocessable_entity
+        question = question_params
+        question.questions.each do |question_id|
+            question_obj = {"user_id": question.student, "question_id": question_id}
+            Question.create(question_obj)
         end
+
+
     end
 
     def index
@@ -48,15 +47,16 @@ class QuestionsController < ApplicationController
 
     def destroy
         question = Question.find_by(id: params[:id])
-        if question.user_id == @current_user.id
-            question.destroy
-            head:no_content
-        end
+            
+        question.destroy
+            
+        head:no_content
     end
 
     private 
 
     def question_params
-        params.permit(:question)
+        params.permit(:student, :questions)
     end
+
 end

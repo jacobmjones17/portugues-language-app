@@ -20,6 +20,7 @@ function QuestionList({ questions }) {
             setScore((score) => score + 1);
         }
     }
+    
 
 
     return (
