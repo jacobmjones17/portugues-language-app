@@ -49,7 +49,7 @@ function NavBar( { loggedIn, logoutUser, currentUser } ) {
                         Home
                     </NavLink>
                     <NavLink
-                        to="/addquestion"
+                        to="/questions/create"
                         exact="true"
                         style={linkStyles}  
                     >

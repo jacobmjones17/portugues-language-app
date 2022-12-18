@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import "./Home.css"
+import { useNavigate } from "react-router-dom"
 
 function Home( { loggedIn, currentUser, users, questions, onDeleteQuestion } ) {
     const [student, setStudent] = useState(0);
     const [checked, setChecked] = useState(false);
     const [assignedQuestions, setAssignedQuestions] = useState([]);
+    const navigate = useNavigate()
     
     function handleCheckBox(question) {
       setChecked(!checked);
@@ -33,6 +35,7 @@ function Home( { loggedIn, currentUser, users, questions, onDeleteQuestion } ) {
               <button onClick={(event) => handleDeleteClick(question, event)}>
                 ✖
               </button>
+              <button onClick={() => navigate(`questions/${question.id}/edit`)}>Edit</button>
             </li>
           </label>
         )) 
@@ -51,7 +54,7 @@ function handleChange(userId) {
 function handleQuestionAssignment(event) {
   event.preventDefault()
   assignedQuestions.forEach((question) => {
-    let studentObject={"user_id": student.id, "question_id":question}
+    let studentObject={"user_id": student.id, "question_id": question}
   
   fetch("/assignment", {
   method: "POST",

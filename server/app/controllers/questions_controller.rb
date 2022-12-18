@@ -17,7 +17,15 @@ class QuestionsController < ApplicationController
     end
 
     def create_assignment
-        UserQuestion.create(question_params)
+        # byebug
+        assign_question = UserQuestion.create(assign_question_params)
+        render json: assign_question
+    end
+
+    def update
+        question = Question.find_by(id: params[:id]) 
+        question.update(question_params)
+        render json: question
     end
 
     def index
@@ -49,8 +57,12 @@ class QuestionsController < ApplicationController
 
     private 
 
-    def question_params
+    def assign_question_params
         params.permit(:user_id, :question_id)
+    end
+
+    def question_params
+        params.permit(:question)
     end
 
 end
