@@ -111,6 +111,8 @@ const allStudents = () => {
   }
 }
 
+console.log(questions)
+
     return (
         loggedInHome()
     )

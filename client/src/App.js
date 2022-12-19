@@ -4,11 +4,12 @@ import Login from "./components/login/Login";
 import Signup from "./components/singup/Signup";
 import NavBar from "./components/navbar/NavBar"
 import QuestionList from "./components/questions/QuestionList";
-import QuestionForm from "./components/questions/QuestionForm";
 import Home from "./components/Home";
+import EditQuestion from "./components/questions/EditQuestion";
+import NewQuestion from "./components/questions/NewQuestion";
 import "./App.css"
 import { UserContext } from "./components/context/User"
-import EditQuestion from "./components/questions/EditQuestion";
+
 
 
 function App() {
@@ -59,6 +60,10 @@ function App() {
       setQuestions(updatedQuestions)
   }
 
+  function handleAddQuestion(newQuestion) {
+    setQuestions([...questions, newQuestion]);
+}
+
 
     function handleDeleteQuestion(id) {
       const updatedQuestions = questions.filter((question) => question.id !== id);
@@ -74,7 +79,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/quiz" element={<QuestionList questions={questions}/>} />
-      <Route path="/questions/create" element={<QuestionForm />} />
+      <Route path="/questions/create" element={<NewQuestion onAddQuestion={handleAddQuestion}/>} />
       <Route path="/" element={<Home loggedIn={loggedIn} currentUser={user} users={users} questions={questions} onDeleteQuestion={handleDeleteQuestion}/>} />
     </Routes>
     </div>

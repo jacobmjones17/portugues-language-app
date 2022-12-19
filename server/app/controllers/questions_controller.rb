@@ -3,17 +3,8 @@ class QuestionsController < ApplicationController
     before_action :is_teacher, only: [:create, :update, :destroy]
     
     def create
-        user = User.find_by(id: session[:user_id])
-        if user
-            question = user.questions.create(question_params)
-            if question.valid?
-            render json: question, status: :created
-            else 
-            render json: { errors: [question.errors.full_messages] }, status: :unprocessable_entity
-            end
-        else
-            render json: { errors: ["Not authorized"] }, status: :unauthorized
-        end
+        question = Question.create(question_params)
+        render json: question, status: :created
     end
 
     def create_assignment
