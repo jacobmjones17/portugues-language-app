@@ -3,8 +3,9 @@ import React, { useState } from "react";
 function NewQuestion ({ onAddQuestion }) {
     const [formData, setFormData] = useState({
         question: "",
-        answer: "",
     });
+
+    const [answerList, setAnswerList] = useState([{ definition: "", word: "", palavra: "" }])
 
     const [ incorrectAnswers, setIncorrectAnswers ] = useState(["", "", ""]);
 
@@ -30,6 +31,7 @@ function NewQuestion ({ onAddQuestion }) {
         )
     })
 
+
     function handleChange(event) {
         setFormData({
             ...formData,
@@ -37,10 +39,25 @@ function NewQuestion ({ onAddQuestion }) {
         });
     }
 
+    function handleMeaningChange(event) {
+        setAnswerList({
+            ...answerList,
+            [event.target.name]: event.target.value
+        })
+
+        console.log(answerList)
+    }
+
+    console.log(incorrectAnswers)
+
     function handleSubmit(event) {
         event.preventDefault();
         const newQuestionInfo = {
             "question": formData.question,
+            "inccorect_answer_one": incorrectAnswers[0],
+            "inccorect_answer_two": incorrectAnswers[1],
+            "inccorect_answer_three": incorrectAnswers[2],
+            "meaning_attributes": answerList
         }
         fetch("/questions", {
             method: "POST",
@@ -74,12 +91,30 @@ function NewQuestion ({ onAddQuestion }) {
                     />
                 </label>
                 <label>
-                    Answer:
+                    Definition:
                     <input
                         type="text"
-                        name="answer"
-                        value={formData.answer}
-                        onChange={handleChange}
+                        name="question"
+                        value={answerList.definition}
+                        onChange={handleMeaningChange}
+                    />
+                </label>
+                <label>
+                    English Answer:
+                    <input
+                        type="text"
+                        name="englishanswer"
+                        value={answerList.word}
+                        onChange={handleMeaningChange}
+                    />
+                </label>
+                <label>
+                    Portuguese Answer:
+                    <input
+                        type="text"
+                        name="portugueseanswer"
+                        value={answerList.palavra}
+                        onChange={handleMeaningChange}
                     />
                 </label>
                 {wrongAnswerInputs}

@@ -46,6 +46,7 @@ function Home( { loggedIn, currentUser, users, questions, onDeleteQuestion } ) {
 
 function handleChange(userId) {
     setStudent(users.find( (u) => userId === u.id));
+    console.log(userId)
     
 }
 

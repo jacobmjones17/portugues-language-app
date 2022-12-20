@@ -43,7 +43,7 @@ function App() {
         .then((response) => response.json())
         .then((questions) => setQuestions(questions))
 
-        fetch("/users")
+      fetch("/users")
         .then((response) => response.json())
         .then((users) => setUsers(users))
     }, []);
@@ -76,8 +76,8 @@ function App() {
       <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={user}/>
       <Routes>
       <Route path="questions/:id/edit" element={<EditQuestion onUpdateQuestion={handleUpdateRecipe} questions={questions}/>}/>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login onLogin={loginUser}/>} />
+      <Route path="/signup" element={<Signup onLogin={loginUser}/>} />
       <Route path="/quiz" element={<QuestionList questions={questions}/>} />
       <Route path="/questions/create" element={<NewQuestion onAddQuestion={handleAddQuestion}/>} />
       <Route path="/" element={<Home loggedIn={loggedIn} currentUser={user} users={users} questions={questions} onDeleteQuestion={handleDeleteQuestion}/>} />

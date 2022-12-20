@@ -41,6 +41,7 @@ const Login = ( { onLogin } ) => {
                 autoComplete="off"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required
                 />
                 <input 
                 type="password"
@@ -49,6 +50,7 @@ const Login = ( { onLogin } ) => {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
                 />
                 <button type="submit" value="Login">Login</button>
             </form>
