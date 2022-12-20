@@ -1,5 +1,5 @@
 class MeaningSerializer < ActiveModel::Serializer
-  attributes :id, :definition, :quiz_answers
+  attributes :id, :definition
 
   has_many :questions
   belongs_to :english
