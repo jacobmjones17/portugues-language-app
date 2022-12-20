@@ -3,28 +3,32 @@ import React, { useState } from "react";
 function NewQuestion ({ onAddQuestion }) {
     const [formData, setFormData] = useState({
         question: "",
+        answer: "",
     });
 
-    const [ incorrectAnswers, setIncorrectAnswers ] = useState(["", "", ""]):
+    const [ incorrectAnswers, setIncorrectAnswers ] = useState(["", "", ""]);
 
-function updateIncorrectAnswers(event, index){
-    const updatedAnswers = incorrectAnswers.map((answer, i) => {
-        if(i === index){
-            return event.target.value
-        }
+    function updateIncorrectAnswers(event, index){
+        const updatedAnswers = incorrectAnswers.map((answer, i) => {
+            if(i === index) {
+                return event.target.value
+            }
+        })
+        setIncorrectAnswers(updatedAnswers)
+    }
+
+    const wrongAnswerInputs = incorrectAnswers.map((value, index) => {
+        return (
+            <label>
+                Incorrect Answer {index + 1}
+                <input
+                    key={index}
+                    value={value}
+                    onChange={ (e) => {updateIncorrectAnswers(e, index)}}
+                />
+            </label>
+        )
     })
-    setIncorrectAnswers(updatedAnswers)
-}
-
-const wrongAnswerInputs = incorrectAnswers.map((value, index) => {
-    return (
-        <input
-            key={index}
-            value={value}
-            onChange={() => {updateIncorrectAnswers(e, index)}}
-        />
-    )
-})
 
     function handleChange(event) {
         setFormData({
@@ -78,33 +82,7 @@ const wrongAnswerInputs = incorrectAnswers.map((value, index) => {
                         onChange={handleChange}
                     />
                 </label>
-                <label>
-                    Incorrect Answer 1:
-                    <input
-                        type="text"
-                        name="incorrectanswer"
-                        value={formData.incorrectAnswer1}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    Incorrect Answer 2:
-                    <input
-                        type="text"
-                        name="incorrectanswer"
-                        value={formData.incorrectAnswer2}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    Incorrect Answer 2:
-                    <input
-                        type="text"
-                        name="incorrectanswer"
-                        value={formData.incorrectAnswer2}
-                        onChange={handleChange}
-                    />
-                </label>
+                {wrongAnswerInputs}
                 <button type="submit">Submit Question</button>
             </form>
             </div>
