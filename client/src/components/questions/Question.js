@@ -11,6 +11,8 @@ function Question({ currentQuestion, onAnswered, currentUser }) {
             return;
         }
 
+        console.log(currentUser)
+
         // const userQuestions = currentUser.questions.map((question) => question)
         // const userQuestionId = userQuestions.map((question) => question.id)
         // const userQuestion = userQuestions.map((question) => question.question)
