@@ -5,16 +5,8 @@ function NewQuestion ({ onAddQuestion }) {
         question: "",
     });
 
-    const generalVariable = {}
 
-    const [answerList, setAnswerList] = useState([{ definition: "", word: "", palavra: "" }])
-
-    const handleAnswerChange = (e, index) => {
-    const { name, value } = e.target;
-    const list = [...answerList];
-    list[index][name] = value;
-    setAnswerList(list);
-    };
+    const [answerList, setAnswerList] = useState({ definition: "", word: "", palavra: "" })
 
 
     function handleChange(event) {
@@ -26,10 +18,7 @@ function NewQuestion ({ onAddQuestion }) {
 
     function handleMeaningChange(event) {
         
-        setAnswerList([{
-            ...answerList,
-            [event.target.name]: event.target.value
-        }])
+        setAnswerList({...answerList, [event.target.name]: event.target.value})
     }
 
     function handleSubmit(event) {

@@ -1,5 +1,5 @@
 class QuestionSerializer < ActiveModel::Serializer
-  attributes :id, :questions
+  attributes :id, :question
 
   belongs_to :meaning
   has_many :user_questions

@@ -3,12 +3,10 @@ class QuestionsController < ApplicationController
     before_action :is_teacher, only: [:create, :update, :destroy]
     
     def create
-        question = Question.create(question_params)
-        if question.valid?
-            render json: question, status: :created
-        else
-            render json: { errors: [recipe.errors.full_messages] }, status: :unprocessable_entity
-        end
+        english = English.create(word: params[:word])
+        portuguese = Portuguese.create(palavra: params[:palavra])
+        meaning = Meaning.create(definition: params[:definition], english_id: english.id, portuguese_id: portuguese.id)
+        question = Question.create(question: params[:question], meaning_id: meaning.id)
     end
 
     def assignment
@@ -56,7 +54,7 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-        params.permit(:question, meaning_attributes: [:id, :enlgish_id, :portuguese_id, :definition, :word, :palavra])
+        params.permit(:question, :definition, :word, :palavra)
     end
 
 end
