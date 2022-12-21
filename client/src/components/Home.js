@@ -10,7 +10,7 @@ function Home( { loggedIn, currentUser, users, questions, onDeleteQuestion } ) {
     
     function handleCheckBox(question) {
       setChecked(!checked);
-      if(!assignedQuestions.find( q => q == question)) {
+      if(!assignedQuestions.find( q => q === question)) {
         setAssignedQuestions([...assignedQuestions, question]);
       } else {
         setAssignedQuestions([...assignedQuestions.filter( q => q !== question)]);
@@ -45,7 +45,7 @@ function Home( { loggedIn, currentUser, users, questions, onDeleteQuestion } ) {
     }
 
 function handleChange(userId) {
-    setStudent(users.find( (u) => userId === u.id));
+    setStudent(users.find( (u) => userId == u.id));
     
 }
 

@@ -3,7 +3,7 @@ import Question from "./Question";
 import "./Question.css"
 
 
-function QuestionList({ questions }) {
+function QuestionList({ questions, currentUser }) {
     
     const [currentQuestionId, setCurrentQuestion] = useState(1);
     const [score, setScore] = useState(0);
@@ -31,6 +31,7 @@ function QuestionList({ questions }) {
                         <Question
                         currentQuestion={currentQuestion}
                         onAnswered={handleQuestionAnswered}
+                        currentUser={currentUser}
                     />
                 ) : (
                     <>

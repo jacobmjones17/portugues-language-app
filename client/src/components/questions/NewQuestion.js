@@ -3,10 +3,11 @@ import React, { useState } from "react";
 function NewQuestion ({ onAddQuestion }) {
     const [formData, setFormData] = useState({
         question: "",
+        definition: "",
+        word: "",
+        palavra: ""
     });
 
-
-    const [answerList, setAnswerList] = useState({ definition: "", word: "", palavra: "" })
 
 
     function handleChange(event) {
@@ -16,17 +17,17 @@ function NewQuestion ({ onAddQuestion }) {
         });
     }
 
-    function handleMeaningChange(event) {
-        
-        setAnswerList({...answerList, [event.target.name]: event.target.value})
-    }
+
 
     function handleSubmit(event) {
         event.preventDefault();
         const newQuestionInfo = {
             "question": formData.question,
-            "meaning_attributes": answerList
+            "definition": formData.definition,
+            "word": formData.word,
+            "palavra": formData.palavra
         }
+        
         fetch("/questions", {
             method: "POST",
             headers: {
@@ -62,8 +63,8 @@ function NewQuestion ({ onAddQuestion }) {
                     <input
                         type="text"
                         name="definition"
-                        value={answerList.definition}
-                        onChange={handleMeaningChange}
+                        value={formData.definition}
+                        onChange={handleChange}
                         required
                     />
                 </label>
@@ -72,8 +73,8 @@ function NewQuestion ({ onAddQuestion }) {
                     <input
                         type="text"
                         name="word"
-                        value={answerList.word}
-                        onChange={handleMeaningChange}
+                        value={formData.word}
+                        onChange={handleChange}
                         required
                     />
                 </label>
@@ -82,8 +83,8 @@ function NewQuestion ({ onAddQuestion }) {
                     <input
                         type="text"
                         name="palavra"
-                        value={answerList.palavra}
-                        onChange={handleMeaningChange}
+                        value={formData.palavra}
+                        onChange={handleChange}
                         required
                     />
                 </label>

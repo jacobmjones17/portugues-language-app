@@ -78,7 +78,7 @@ function App() {
       <Route path="questions/:id/edit" element={<EditQuestion onUpdateQuestion={handleUpdateRecipe} questions={questions}/>}/>
       <Route path="/login" element={<Login onLogin={loginUser}/>} />
       <Route path="/signup" element={<Signup onLogin={loginUser}/>} />
-      <Route path="/quiz" element={<QuestionList questions={questions}/>} />
+      <Route path="/quiz" element={<QuestionList questions={questions} currentUser={user}/>} />
       <Route path="/questions/create" element={<NewQuestion onAddQuestion={handleAddQuestion}/>} />
       <Route path="/" element={<Home loggedIn={loggedIn} currentUser={user} users={users} questions={questions} onDeleteQuestion={handleDeleteQuestion}/>} />
     </Routes>
