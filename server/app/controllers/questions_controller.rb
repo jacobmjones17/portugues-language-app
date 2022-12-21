@@ -56,7 +56,7 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-        params.permit(:question, :incorrect_answer_one, :incorrect_answer_two, :incorrect_answer_three, meaning_attributes: [:id, :definition, :english_id, :portuguese_id, :word, :palavra ])
+        params.permit(:question, meaning_attributes: [:id, :enlgish_id, :portuguese_id, :definition, :word, :palavra])
     end
 
 end

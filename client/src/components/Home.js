@@ -49,7 +49,7 @@ function handleChange(userId) {
     
 }
 
-//use useEffect to wait for student to be updated before sending it. 
+//use useEffect to wait for student to be updated before sending it.
   
 
 function handleQuestionAssignment(event) {
@@ -57,7 +57,7 @@ function handleQuestionAssignment(event) {
   assignedQuestions.forEach((question) => {
     let studentObject={"user_id": student.id, "question_id": question}
   
-  fetch("/assignment", {
+  fetch("/assignments", {
   method: "POST",
   headers: {
       "Content-Type": "application/json",
