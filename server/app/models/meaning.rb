@@ -3,14 +3,14 @@ class Meaning < ApplicationRecord
     belongs_to :english
     belongs_to :portuguese
 
-    # def quiz_answers
-    #     quiz_obj = {
-    #         wrong_english_answers: English.joins(:meanings).where.not("meanings.definition = ?", "A way to greet someone"),
-    #         wrong_portuguese_answers: Portuguese.joins(:meanings).where.not("meanings.definition = ?", "A way to greet someone"),
-    #         correct_english_answers: self.englishes,
-    #         correct_portuguese_answers: self.portugueses
-    #     }
-    # end
+    def quiz_answers
+        quiz_obj = {
+            wrong_english_answer: English.joins(:meanings).where.not("meanings.definition = ?", "A way to greet someone"),
+            wrong_portuguese_answer: Portuguese.joins(:meanings).where.not("meanings.definition = ?", "A way to greet someone"),
+            correct_english_answer: self.english,
+            correct_portuguese_answer: self.portugues
+        }
+    end
 
     def meaning_word_names
         self.english.word
