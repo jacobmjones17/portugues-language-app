@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :meanings
   resources :user_questions
 
-  post "/assignment", to: "questions#create_assignment"
+  post "/assignment", to: "questions#assignment"
 
   post "/login", to: "sessions#create"
 

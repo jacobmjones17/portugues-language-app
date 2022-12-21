@@ -4,11 +4,14 @@ class QuestionsController < ApplicationController
     
     def create
         question = Question.create(question_params)
-        render json: question, status: :created
+        if question.valid?
+            render json: question, status: :created
+        else
+            render json: { errors: [recipe.errors.full_messages] }, status: :unprocessable_entity
+        end
     end
 
-    def create_assignment
-        # byebug
+    def assignment
         assign_question = UserQuestion.create(assign_question_params)
         render json: assign_question
     end

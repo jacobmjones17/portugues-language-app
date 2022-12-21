@@ -11,8 +11,10 @@ function NewQuestion ({ onAddQuestion }) {
 
     function updateIncorrectAnswers(event, index){
         const updatedAnswers = incorrectAnswers.map((answer, i) => {
-            if(i === index) {
+            if(i === index){
                 return event.target.value
+            } else {
+                return answer
             }
         })
         setIncorrectAnswers(updatedAnswers)
@@ -26,6 +28,7 @@ function NewQuestion ({ onAddQuestion }) {
                     key={index}
                     value={value}
                     onChange={ (e) => {updateIncorrectAnswers(e, index)}}
+                    required
                 />
             </label>
         )
@@ -44,11 +47,7 @@ function NewQuestion ({ onAddQuestion }) {
             ...answerList,
             [event.target.name]: event.target.value
         })
-
-        console.log(answerList)
     }
-
-    console.log(incorrectAnswers)
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -88,6 +87,7 @@ function NewQuestion ({ onAddQuestion }) {
                         name="question"
                         value={formData.question}
                         onChange={handleChange}
+                        required
                     />
                 </label>
                 <label>
@@ -97,6 +97,7 @@ function NewQuestion ({ onAddQuestion }) {
                         name="question"
                         value={answerList.definition}
                         onChange={handleMeaningChange}
+                        required
                     />
                 </label>
                 <label>
@@ -106,6 +107,7 @@ function NewQuestion ({ onAddQuestion }) {
                         name="englishanswer"
                         value={answerList.word}
                         onChange={handleMeaningChange}
+                        required
                     />
                 </label>
                 <label>
@@ -115,6 +117,7 @@ function NewQuestion ({ onAddQuestion }) {
                         name="portugueseanswer"
                         value={answerList.palavra}
                         onChange={handleMeaningChange}
+                        required
                     />
                 </label>
                 {wrongAnswerInputs}

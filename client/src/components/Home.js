@@ -46,10 +46,10 @@ function Home( { loggedIn, currentUser, users, questions, onDeleteQuestion } ) {
 
 function handleChange(userId) {
     setStudent(users.find( (u) => userId === u.id));
-    console.log(userId)
     
 }
 
+//use useEffect to wait for student to be updated before sending it. 
   
 
 function handleQuestionAssignment(event) {
@@ -112,7 +112,6 @@ const allStudents = () => {
   }
 }
 
-console.log(questions)
 
     return (
         loggedInHome()
