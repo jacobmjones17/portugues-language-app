@@ -54,4 +54,6 @@ end
 
 gem "active_model_serializers", "~> 0.10.12"
 
-gem "omniauth"
+gem "thin", "~> 1.8"
+gem "omniauth-facebook", "~> 8.0"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
