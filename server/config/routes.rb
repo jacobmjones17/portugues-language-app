@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :meanings
   resources :user_questions
 
+  # get "auth/developer", :as => "developer_auth"
+  # match get "auth/:provider/callback", => "session#create" :via => [:get, :post]
+
   post "/assignments", to: "questions#assignment"
 
   post "/login", to: "sessions#create"
@@ -16,7 +19,5 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
 
   delete "/logout", to: "sessions#destroy"
-
-  get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
 
 end

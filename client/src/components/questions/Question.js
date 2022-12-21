@@ -11,15 +11,15 @@ function Question({ currentQuestion, onAnswered, currentUser }) {
             return;
         }
 
-        const userQuestions = currentUser.questions.map((question) => question)
-        const userQuestionId = userQuestions.map((question) => question.id)
-        const userQuestion = userQuestions.map((question) => question.question)
+        // const userQuestions = currentUser.questions.map((question) => question)
+        // const userQuestionId = userQuestions.map((question) => question.id)
+        // const userQuestion = userQuestions.map((question) => question.question)
 
 
         
-        console.log(userQuestions)
-        console.log(userQuestionId)
-        console.log(userQuestion)
+        // console.log(userQuestions)
+        // console.log(userQuestionId)
+        // console.log(userQuestion)
 
         // const userQuestionss = currentUser.questions.map((question) => 
         // <div className="quiz">
@@ -47,7 +47,7 @@ function Question({ currentQuestion, onAnswered, currentUser }) {
 
     return (
         <div className="quiz">
-            <h1> Question {userQuestionId}</h1>
+            <h1> Question {id}</h1>
             <h3>{question}</h3>
             {/* {answers.map((answer, index) => {
                 const isCorrect = index === correctIndex;

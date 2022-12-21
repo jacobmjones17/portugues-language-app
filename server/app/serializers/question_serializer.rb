@@ -4,9 +4,5 @@ class QuestionSerializer < ActiveModel::Serializer
   belongs_to :meaning
   has_many :user_questions
   has_many :users, through: :user_questions
-
-  def portuguese_and_english
-    self.meanings.map()
-  end
   
 end

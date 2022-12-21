@@ -70,15 +70,13 @@ function handleQuestionAssignment(event) {
     
 const allStudents = () => {
   if (users) {
-    return(
+    return (
   users.map((user) => !user.admin ? <option value={user.id} key={user.id} id={user.id}>{user.username} </option> : null)
     )
   } else {
     return (null)
   }
 }
-
-
 
   const loggedInHome = () => {
     if (!loggedIn){

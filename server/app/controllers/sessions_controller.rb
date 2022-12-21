@@ -22,7 +22,4 @@ class SessionsController < ApplicationController
         end
     end
 
-    def teacher_state
-        request.env['omniauth.params']['teacher']
-    end
 end
