@@ -1,5 +1,5 @@
-Name
-# Worlds-Best-Cookbook
+## Name
+# Portugues Learning App
 
 ## Description
 Ever had the desire to learn a new language but was not sure about which language you wanted to learn? Then you have come to the right place! I love the Portugues language and I know you will too. This application will help you learn Portuguese by learning vocabulary, taking quizes, and using the correct words in the right sentences.
